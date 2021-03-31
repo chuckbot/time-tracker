@@ -1,0 +1,11 @@
+type Project @model {
+  id: ID!
+  name: String!
+  description: String
+  time: TimeTrack
+}
+
+type TimeTrack {
+  description: String!
+  amount: Float
+}
