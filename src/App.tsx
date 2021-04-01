@@ -1,8 +1,11 @@
-import React from "react";
-import { MainLayout } from "./views/Form";
+import { MainLayout } from "./Layouts/MainLayout";
 
 function App(): JSX.Element {
-  return <MainLayout />;
+  return (
+    <div>
+      <MainLayout />
+    </div>
+  );
 }
 
 export default App;

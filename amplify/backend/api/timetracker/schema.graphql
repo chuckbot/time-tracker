@@ -2,10 +2,11 @@ type Project @model {
   id: ID!
   name: String!
   description: String
-  time: TimeTrack
 }
 
-type TimeTrack {
+type TimeTrack @model {
+  id: ID!
+  belongsTo: String
   description: String!
   amount: Float
 }

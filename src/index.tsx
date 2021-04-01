@@ -1,12 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import './index.css'
+import 'sweetalert2/dist/sweetalert2.css'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+import Amplify from 'aws-amplify'
+import App from "./App"
+import ReactDOM from "react-dom"
+import config from './aws-exports'
+import reportWebVitals from "./reportWebVitals"
+
+Amplify.configure(config)
+
+ReactDOM.render(<App />,
   document.getElementById("root")
 );
 

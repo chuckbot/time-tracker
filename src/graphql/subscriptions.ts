@@ -8,10 +8,6 @@ export const onCreateProject = /* GraphQL */ `
       id
       name
       description
-      time {
-        description
-        amount
-      }
       createdAt
       updatedAt
     }
@@ -23,10 +19,6 @@ export const onUpdateProject = /* GraphQL */ `
       id
       name
       description
-      time {
-        description
-        amount
-      }
       createdAt
       updatedAt
     }
@@ -38,10 +30,42 @@ export const onDeleteProject = /* GraphQL */ `
       id
       name
       description
-      time {
-        description
-        amount
-      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateTimeTrack = /* GraphQL */ `
+  subscription OnCreateTimeTrack {
+    onCreateTimeTrack {
+      id
+      belongsTo
+      description
+      amount
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateTimeTrack = /* GraphQL */ `
+  subscription OnUpdateTimeTrack {
+    onUpdateTimeTrack {
+      id
+      belongsTo
+      description
+      amount
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteTimeTrack = /* GraphQL */ `
+  subscription OnDeleteTimeTrack {
+    onDeleteTimeTrack {
+      id
+      belongsTo
+      description
+      amount
       createdAt
       updatedAt
     }

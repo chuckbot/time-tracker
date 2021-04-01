@@ -9,7 +9,7 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 365,
-              "description": "Loka react test project"
+              "description": "time traker test for loka"
             }
           },
           "additionalAuthenticationProviders": []

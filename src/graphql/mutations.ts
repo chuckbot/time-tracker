@@ -11,10 +11,6 @@ export const createProject = /* GraphQL */ `
       id
       name
       description
-      time {
-        description
-        amount
-      }
       createdAt
       updatedAt
     }
@@ -29,10 +25,6 @@ export const updateProject = /* GraphQL */ `
       id
       name
       description
-      time {
-        description
-        amount
-      }
       createdAt
       updatedAt
     }
@@ -47,10 +39,51 @@ export const deleteProject = /* GraphQL */ `
       id
       name
       description
-      time {
-        description
-        amount
-      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createTimeTrack = /* GraphQL */ `
+  mutation CreateTimeTrack(
+    $input: CreateTimeTrackInput!
+    $condition: ModelTimeTrackConditionInput
+  ) {
+    createTimeTrack(input: $input, condition: $condition) {
+      id
+      belongsTo
+      description
+      amount
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateTimeTrack = /* GraphQL */ `
+  mutation UpdateTimeTrack(
+    $input: UpdateTimeTrackInput!
+    $condition: ModelTimeTrackConditionInput
+  ) {
+    updateTimeTrack(input: $input, condition: $condition) {
+      id
+      belongsTo
+      description
+      amount
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTimeTrack = /* GraphQL */ `
+  mutation DeleteTimeTrack(
+    $input: DeleteTimeTrackInput!
+    $condition: ModelTimeTrackConditionInput
+  ) {
+    deleteTimeTrack(input: $input, condition: $condition) {
+      id
+      belongsTo
+      description
+      amount
       createdAt
       updatedAt
     }

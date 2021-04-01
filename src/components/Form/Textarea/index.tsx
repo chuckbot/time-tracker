@@ -1,5 +1,6 @@
+import { ITextarea } from "./models";
+import { MainTextareaWrapper } from './styles'
 import React from "react";
-import { ITextarea } from "./textarea-model";
 
 const Textarea = React.forwardRef(function Textarea(
   props: ITextarea,
@@ -8,15 +9,13 @@ const Textarea = React.forwardRef(function Textarea(
   const { id, name, placeholder, rows } = props;
 
   return (
-    <div>
-      <textarea
-        name={name}
-        id={id}
-        rows={rows}
-        placeholder={placeholder}
-        ref={ref}
-      />
-    </div>
+    <MainTextareaWrapper
+      name={name}
+      id={id}
+      rows={rows}
+      placeholder={placeholder}
+      ref={ref}
+    />
   );
 });
 

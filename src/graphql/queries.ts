@@ -8,10 +8,6 @@ export const getProject = /* GraphQL */ `
       id
       name
       description
-      time {
-        description
-        amount
-      }
       createdAt
       updatedAt
     }
@@ -28,10 +24,37 @@ export const listProjects = /* GraphQL */ `
         id
         name
         description
-        time {
-          description
-          amount
-        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getTimeTrack = /* GraphQL */ `
+  query GetTimeTrack($id: ID!) {
+    getTimeTrack(id: $id) {
+      id
+      belongsTo
+      description
+      amount
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listTimeTracks = /* GraphQL */ `
+  query ListTimeTracks(
+    $filter: ModelTimeTrackFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTimeTracks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        belongsTo
+        description
+        amount
         createdAt
         updatedAt
       }

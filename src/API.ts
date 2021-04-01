@@ -6,12 +6,6 @@ export type CreateProjectInput = {
   id?: string | null,
   name: string,
   description?: string | null,
-  time?: TimeTrackInput | null,
-};
-
-export type TimeTrackInput = {
-  description: string,
-  amount?: number | null,
 };
 
 export type ModelProjectConditionInput = {
@@ -62,30 +56,52 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type Project = {
-  __typename: "Project",
-  id?: string,
-  name?: string,
-  description?: string | null,
-  time?: TimeTrack,
-  createdAt?: string,
-  updatedAt?: string,
-};
-
-export type TimeTrack = {
-  __typename: "TimeTrack",
-  description?: string,
-  amount?: number | null,
-};
-
 export type UpdateProjectInput = {
   id: string,
   name?: string | null,
   description?: string | null,
-  time?: TimeTrackInput | null,
 };
 
 export type DeleteProjectInput = {
+  id?: string | null,
+};
+
+export type CreateTimeTrackInput = {
+  id?: string | null,
+  belongsTo?: string | null,
+  description: string,
+  amount?: number | null,
+};
+
+export type ModelTimeTrackConditionInput = {
+  belongsTo?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  amount?: ModelFloatInput | null,
+  and?: Array< ModelTimeTrackConditionInput | null > | null,
+  or?: Array< ModelTimeTrackConditionInput | null > | null,
+  not?: ModelTimeTrackConditionInput | null,
+};
+
+export type ModelFloatInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type UpdateTimeTrackInput = {
+  id: string,
+  belongsTo?: string | null,
+  description?: string | null,
+  amount?: number | null,
+};
+
+export type DeleteTimeTrackInput = {
   id?: string | null,
 };
 
@@ -114,90 +130,125 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type ModelProjectConnection = {
-  __typename: "ModelProjectConnection",
-  items?:  Array<Project | null > | null,
-  nextToken?: string | null,
+export type ModelTimeTrackFilterInput = {
+  id?: ModelIDInput | null,
+  belongsTo?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  amount?: ModelFloatInput | null,
+  and?: Array< ModelTimeTrackFilterInput | null > | null,
+  or?: Array< ModelTimeTrackFilterInput | null > | null,
+  not?: ModelTimeTrackFilterInput | null,
 };
 
 export type CreateProjectMutationVariables = {
-  input?: CreateProjectInput,
+  input: CreateProjectInput,
   condition?: ModelProjectConditionInput | null,
 };
 
 export type CreateProjectMutation = {
-  createProject?:  {
+  createProject:  {
     __typename: "Project",
     id: string,
     name: string,
-    description?: string | null,
-    time?:  {
-      __typename: "TimeTrack",
-      description: string,
-      amount?: number | null,
-    } | null,
+    description: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
 export type UpdateProjectMutationVariables = {
-  input?: UpdateProjectInput,
+  input: UpdateProjectInput,
   condition?: ModelProjectConditionInput | null,
 };
 
 export type UpdateProjectMutation = {
-  updateProject?:  {
+  updateProject:  {
     __typename: "Project",
     id: string,
     name: string,
-    description?: string | null,
-    time?:  {
-      __typename: "TimeTrack",
-      description: string,
-      amount?: number | null,
-    } | null,
+    description: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
 export type DeleteProjectMutationVariables = {
-  input?: DeleteProjectInput,
+  input: DeleteProjectInput,
   condition?: ModelProjectConditionInput | null,
 };
 
 export type DeleteProjectMutation = {
-  deleteProject?:  {
+  deleteProject:  {
     __typename: "Project",
     id: string,
     name: string,
-    description?: string | null,
-    time?:  {
-      __typename: "TimeTrack",
-      description: string,
-      amount?: number | null,
-    } | null,
+    description: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type CreateTimeTrackMutationVariables = {
+  input: CreateTimeTrackInput,
+  condition?: ModelTimeTrackConditionInput | null,
+};
+
+export type CreateTimeTrackMutation = {
+  createTimeTrack:  {
+    __typename: "TimeTrack",
+    id: string,
+    belongsTo: string | null,
+    description: string,
+    amount: number | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateTimeTrackMutationVariables = {
+  input: UpdateTimeTrackInput,
+  condition?: ModelTimeTrackConditionInput | null,
+};
+
+export type UpdateTimeTrackMutation = {
+  updateTimeTrack:  {
+    __typename: "TimeTrack",
+    id: string,
+    belongsTo: string | null,
+    description: string,
+    amount: number | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteTimeTrackMutationVariables = {
+  input: DeleteTimeTrackInput,
+  condition?: ModelTimeTrackConditionInput | null,
+};
+
+export type DeleteTimeTrackMutation = {
+  deleteTimeTrack:  {
+    __typename: "TimeTrack",
+    id: string,
+    belongsTo: string | null,
+    description: string,
+    amount: number | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
 export type GetProjectQueryVariables = {
-  id?: string,
+  id: string,
 };
 
 export type GetProjectQuery = {
-  getProject?:  {
+  getProject:  {
     __typename: "Project",
     id: string,
     name: string,
-    description?: string | null,
-    time?:  {
-      __typename: "TimeTrack",
-      description: string,
-      amount?: number | null,
-    } | null,
+    description: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -210,68 +261,122 @@ export type ListProjectsQueryVariables = {
 };
 
 export type ListProjectsQuery = {
-  listProjects?:  {
+  listProjects:  {
     __typename: "ModelProjectConnection",
-    items?:  Array< {
+    items:  Array< {
       __typename: "Project",
       id: string,
       name: string,
-      description?: string | null,
-      time?:  {
-        __typename: "TimeTrack",
-        description: string,
-        amount?: number | null,
-      } | null,
+      description: string | null,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
-    nextToken?: string | null,
+    nextToken: string | null,
+  } | null,
+};
+
+export type GetTimeTrackQueryVariables = {
+  id: string,
+};
+
+export type GetTimeTrackQuery = {
+  getTimeTrack:  {
+    __typename: "TimeTrack",
+    id: string,
+    belongsTo: string | null,
+    description: string,
+    amount: number | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListTimeTracksQueryVariables = {
+  filter?: ModelTimeTrackFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListTimeTracksQuery = {
+  listTimeTracks:  {
+    __typename: "ModelTimeTrackConnection",
+    items:  Array< {
+      __typename: "TimeTrack",
+      id: string,
+      belongsTo: string | null,
+      description: string,
+      amount: number | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
+    nextToken: string | null,
   } | null,
 };
 
 export type OnCreateProjectSubscription = {
-  onCreateProject?:  {
+  onCreateProject:  {
     __typename: "Project",
     id: string,
     name: string,
-    description?: string | null,
-    time?:  {
-      __typename: "TimeTrack",
-      description: string,
-      amount?: number | null,
-    } | null,
+    description: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
 export type OnUpdateProjectSubscription = {
-  onUpdateProject?:  {
+  onUpdateProject:  {
     __typename: "Project",
     id: string,
     name: string,
-    description?: string | null,
-    time?:  {
-      __typename: "TimeTrack",
-      description: string,
-      amount?: number | null,
-    } | null,
+    description: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
 export type OnDeleteProjectSubscription = {
-  onDeleteProject?:  {
+  onDeleteProject:  {
     __typename: "Project",
     id: string,
     name: string,
-    description?: string | null,
-    time?:  {
-      __typename: "TimeTrack",
-      description: string,
-      amount?: number | null,
-    } | null,
+    description: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnCreateTimeTrackSubscription = {
+  onCreateTimeTrack:  {
+    __typename: "TimeTrack",
+    id: string,
+    belongsTo: string | null,
+    description: string,
+    amount: number | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateTimeTrackSubscription = {
+  onUpdateTimeTrack:  {
+    __typename: "TimeTrack",
+    id: string,
+    belongsTo: string | null,
+    description: string,
+    amount: number | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteTimeTrackSubscription = {
+  onDeleteTimeTrack:  {
+    __typename: "TimeTrack",
+    id: string,
+    belongsTo: string | null,
+    description: string,
+    amount: number | null,
     createdAt: string,
     updatedAt: string,
   } | null,
