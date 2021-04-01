@@ -9,7 +9,7 @@ export const MainWrapper = styled.div `
   padding: 20px;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
+  overflow-y: scroll;
 
   img.return-icon {
     width: 20px;
@@ -69,8 +69,9 @@ export const MainWrapper = styled.div `
 
     div.table-wrapper {
       margin-top: 20px;
-      height: 100px;
+      height: 150px;
       overflow-y: scroll;
+      margin-bottom: 20px;
 
       p.empty-text {
         color: #909090;
