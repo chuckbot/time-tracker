@@ -12,7 +12,7 @@ export const MainWrapper = styled.div `
 
   div.visible-area  {
     width: 1320px;
-    height: calc(100vh - 40px);
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 3fr;
   }

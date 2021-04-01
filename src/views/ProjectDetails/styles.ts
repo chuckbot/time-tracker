@@ -3,11 +3,13 @@ import styled from 'styled-components'
 export const MainWrapper = styled.div `
   width: 100%;
   height: 100%;
+  max-height: 634px;
   background: white;
   border-radius: 5px;
   padding: 20px;
   box-sizing: border-box;
   position: relative;
+  overflow: hidden;
 
   img.return-icon {
     width: 20px;
@@ -67,6 +69,8 @@ export const MainWrapper = styled.div `
 
     div.table-wrapper {
       margin-top: 20px;
+      height: 100px;
+      overflow-y: scroll;
 
       p.empty-text {
         color: #909090;
